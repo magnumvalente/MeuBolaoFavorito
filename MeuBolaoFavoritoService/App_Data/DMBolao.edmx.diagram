@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="25487fb3691240ea9083a9f848f4fd19" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Bolao.TARQUIVO" Width="1.5" PointX="1.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TBOLAO" Width="1.5" PointX="3.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TDICIONARIO" Width="1.5" PointX="11" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TIDIOMA" Width="1.5" PointX="8.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TJOGO" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TPACOTE" Width="1.5" PointX="1.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TPACOTE_TRECURSO" Width="1.5" PointX="4" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TPALPITE" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TRECURSO" Width="1.5" PointX="0.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TREGRA" Width="1.5" PointX="1.5" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TTIME" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TUSUARIO" Width="2.375" PointX="8.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TUSUARIO_RECURSO" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TUSUARIO_TBOLAO" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bolao.TUSUARIO_TIME" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="Model.Bolao.FK_TBOLAO_TARQUIVO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TTIME_TARQUIVO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TBOLAO_TREGRA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TUSUARIO_TBOLAO_TBOLAO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TDICIONARIO_TIDIOMA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TJOGO_TTIME1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TJOGO_TTIME2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TPALPITE_TJOGO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TPACOTE_TRECURSO_TPACOTE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TPACOTE_TRECURSO_TRECURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TPALPITE_TRECURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TPALPITE_TUSUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TUSUARIO_RECURSO_TRECURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TUSUARIO_TIME_TTIME" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TUSUARIO_TBOLAO_TUSUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TUSUARIO_TBOLAO_TUSUARIO_RESPONSAVEL" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Bolao.FK_TUSUARIO_TIME_TUSUARIO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Bolao.TPONTUACAO" Width="1.5" PointX="1" PointY="34.125" />
+        <AssociationConnector Association="Model.Bolao.FK_TPALPITE_TPONTUACAO" />
+        <EntityTypeShape EntityType="Model.Bolao.TCOMPETICAO" Width="1.5" PointX="3.75" PointY="8.625" />
+        <EntityTypeShape EntityType="Model.Bolao.TRODADA" Width="1.5" PointX="6" PointY="9" />
+        <AssociationConnector Association="Model.Bolao.FK_TCOMPETICAO_TARQUIVO" />
+        <AssociationConnector Association="Model.Bolao.FK_TBOLAO_TCOMPETICAO" />
+        <AssociationConnector Association="Model.Bolao.FK_TRODADA_TCOMPETICAO" />
+        <AssociationConnector Association="Model.Bolao.FK_TJOGO_TRODADA" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

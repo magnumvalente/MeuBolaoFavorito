@@ -1,0 +1,1390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Bolao.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TARQUIVO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NOME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ARQUIVO" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBOLAO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NOME_CURTO" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="NOME_LONGO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="300" />
+          <Property Name="DATA_INICIO" Type="date" Nullable="false" />
+          <Property Name="DATA_FIM" Type="date" Nullable="false" />
+          <Property Name="ATIVO" Type="bit" Nullable="false" />
+          <Property Name="ID_REGRA" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_COMPETICAO" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_ARQUIVO" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="TCOMPETICAO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NOME_CURTO" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="NOME_LONGO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="100" />
+          <Property Name="DATA_INICIO" Type="date" Nullable="false" />
+          <Property Name="DATA_FIM" Type="date" Nullable="false" />
+          <Property Name="ATIVO" Type="bit" Nullable="false" />
+          <Property Name="ID_ARQUIVO" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="TDICIONARIO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_IDIOMA" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CODIGO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIDIOMA">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="COD_IDIOMA" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TJOGO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_RODADA" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_TIME1" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_TIME2" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DATA" Type="datetime" />
+          <Property Name="NUMERO" Type="smallint" Nullable="false" />
+          <Property Name="PESO" Type="smallint" Nullable="false" />
+          <Property Name="GOLS_TIME1" Type="smallint" />
+          <Property Name="GOLS_TIME2" Type="smallint" />
+          <Property Name="ATIVO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TPACOTE">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CODIGO" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="NOME" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TPACOTE_TRECURSO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_PACOTE" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_RECURSO" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QUANTIDADE" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TPALPITE">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_JOGO" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GOL_TIME1" Type="smallint" />
+          <Property Name="GOL_TIME2" Type="smallint" />
+          <Property Name="ID_RECURSO" Type="uniqueidentifier" />
+          <Property Name="DATA" Type="datetime" Nullable="false" />
+          <Property Name="ID_PONTUACAO" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TPONTUACAO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CODIGO" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="VALOR" Type="smallint" Nullable="false" />
+          <Property Name="PRIORIDADE" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRECURSO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CODIGO" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PESO" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TREGRA">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TIPO_BOLAO" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="PERMITE_RECURSO" Type="bit" Nullable="false" />
+          <Property Name="PREMIADO" Type="bit" Nullable="false" />
+          <Property Name="DESCRICAO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TRODADA">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NOME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NUMERO" Type="smallint" Nullable="false" />
+          <Property Name="PESO" Type="smallint" Nullable="false" />
+          <Property Name="ID_COMPETICAO" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TTIME">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NOME_CURTO" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="NOME_LONGO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID_ARQUIVO" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="TUSUARIO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LOGIN" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="NOME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ATIVO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TUSUARIO_RECURSO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_RECURSO" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QUANTIDADE" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TUSUARIO_TBOLAO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_BOLAO" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ATIVO" Type="bit" Nullable="false" />
+          <Property Name="ID_USUARIO_RESPONSAVEL" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="TUSUARIO_TIME">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_TIME" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TBOLAO_TARQUIVO">
+          <End Role="TARQUIVO" Type="Self.TARQUIVO" Multiplicity="0..1" />
+          <End Role="TBOLAO" Type="Self.TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARQUIVO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TBOLAO">
+              <PropertyRef Name="ID_ARQUIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBOLAO_TCOMPETICAO">
+          <End Role="TCOMPETICAO" Type="Self.TCOMPETICAO" Multiplicity="1" />
+          <End Role="TBOLAO" Type="Self.TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCOMPETICAO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TBOLAO">
+              <PropertyRef Name="ID_COMPETICAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBOLAO_TREGRA">
+          <End Role="TREGRA" Type="Self.TREGRA" Multiplicity="1" />
+          <End Role="TBOLAO" Type="Self.TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TREGRA">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TBOLAO">
+              <PropertyRef Name="ID_REGRA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TCOMPETICAO_TARQUIVO">
+          <End Role="TARQUIVO" Type="Self.TARQUIVO" Multiplicity="0..1" />
+          <End Role="TCOMPETICAO" Type="Self.TCOMPETICAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARQUIVO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TCOMPETICAO">
+              <PropertyRef Name="ID_ARQUIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TDICIONARIO_TIDIOMA">
+          <End Role="TIDIOMA" Type="Self.TIDIOMA" Multiplicity="1" />
+          <End Role="TDICIONARIO" Type="Self.TDICIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIDIOMA">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TDICIONARIO">
+              <PropertyRef Name="ID_IDIOMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TJOGO_TRODADA">
+          <End Role="TRODADA" Type="Self.TRODADA" Multiplicity="1" />
+          <End Role="TJOGO" Type="Self.TJOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRODADA">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TJOGO">
+              <PropertyRef Name="ID_RODADA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TJOGO_TTIME1">
+          <End Role="TTIME" Type="Self.TTIME" Multiplicity="1" />
+          <End Role="TJOGO" Type="Self.TJOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTIME">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TJOGO">
+              <PropertyRef Name="ID_TIME1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TJOGO_TTIME2">
+          <End Role="TTIME" Type="Self.TTIME" Multiplicity="1" />
+          <End Role="TJOGO" Type="Self.TJOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTIME">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TJOGO">
+              <PropertyRef Name="ID_TIME2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPACOTE_TRECURSO_TPACOTE">
+          <End Role="TPACOTE" Type="Self.TPACOTE" Multiplicity="1" />
+          <End Role="TPACOTE_TRECURSO" Type="Self.TPACOTE_TRECURSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPACOTE">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPACOTE_TRECURSO">
+              <PropertyRef Name="ID_PACOTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPACOTE_TRECURSO_TRECURSO">
+          <End Role="TRECURSO" Type="Self.TRECURSO" Multiplicity="1" />
+          <End Role="TPACOTE_TRECURSO" Type="Self.TPACOTE_TRECURSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRECURSO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPACOTE_TRECURSO">
+              <PropertyRef Name="ID_RECURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPALPITE_TJOGO">
+          <End Role="TJOGO" Type="Self.TJOGO" Multiplicity="1" />
+          <End Role="TPALPITE" Type="Self.TPALPITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TJOGO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPALPITE">
+              <PropertyRef Name="ID_JOGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPALPITE_TPONTUACAO">
+          <End Role="TPONTUACAO" Type="Self.TPONTUACAO" Multiplicity="1" />
+          <End Role="TPALPITE" Type="Self.TPALPITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPONTUACAO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPALPITE">
+              <PropertyRef Name="ID_PONTUACAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPALPITE_TRECURSO">
+          <End Role="TRECURSO" Type="Self.TRECURSO" Multiplicity="0..1" />
+          <End Role="TPALPITE" Type="Self.TPALPITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRECURSO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPALPITE">
+              <PropertyRef Name="ID_RECURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPALPITE_TUSUARIO">
+          <End Role="TUSUARIO" Type="Self.TUSUARIO" Multiplicity="1" />
+          <End Role="TPALPITE" Type="Self.TPALPITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSUARIO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPALPITE">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRODADA_TCOMPETICAO">
+          <End Role="TCOMPETICAO" Type="Self.TCOMPETICAO" Multiplicity="1" />
+          <End Role="TRODADA" Type="Self.TRODADA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCOMPETICAO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TRODADA">
+              <PropertyRef Name="ID_COMPETICAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TTIME_TARQUIVO">
+          <End Role="TARQUIVO" Type="Self.TARQUIVO" Multiplicity="0..1" />
+          <End Role="TTIME" Type="Self.TTIME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARQUIVO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TTIME">
+              <PropertyRef Name="ID_ARQUIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_RECURSO_TRECURSO">
+          <End Role="TRECURSO" Type="Self.TRECURSO" Multiplicity="1" />
+          <End Role="TUSUARIO_RECURSO" Type="Self.TUSUARIO_RECURSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRECURSO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_RECURSO">
+              <PropertyRef Name="ID_RECURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TBOLAO_TBOLAO">
+          <End Role="TBOLAO" Type="Self.TBOLAO" Multiplicity="1" />
+          <End Role="TUSUARIO_TBOLAO" Type="Self.TUSUARIO_TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBOLAO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TBOLAO">
+              <PropertyRef Name="ID_BOLAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TBOLAO_TUSUARIO">
+          <End Role="TUSUARIO" Type="Self.TUSUARIO" Multiplicity="1" />
+          <End Role="TUSUARIO_TBOLAO" Type="Self.TUSUARIO_TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSUARIO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TBOLAO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TBOLAO_TUSUARIO_RESPONSAVEL">
+          <End Role="TUSUARIO" Type="Self.TUSUARIO" Multiplicity="0..1" />
+          <End Role="TUSUARIO_TBOLAO" Type="Self.TUSUARIO_TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSUARIO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TBOLAO">
+              <PropertyRef Name="ID_USUARIO_RESPONSAVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TIME_TTIME">
+          <End Role="TTIME" Type="Self.TTIME" Multiplicity="1" />
+          <End Role="TUSUARIO_TIME" Type="Self.TUSUARIO_TIME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTIME">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TIME">
+              <PropertyRef Name="ID_TIME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TIME_TUSUARIO">
+          <End Role="TUSUARIO" Type="Self.TUSUARIO" Multiplicity="1" />
+          <End Role="TUSUARIO_TIME" Type="Self.TUSUARIO_TIME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSUARIO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TIME">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelBolaoStoreContainer">
+          <EntitySet Name="TARQUIVO" EntityType="Self.TARQUIVO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBOLAO" EntityType="Self.TBOLAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TCOMPETICAO" EntityType="Self.TCOMPETICAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TDICIONARIO" EntityType="Self.TDICIONARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIDIOMA" EntityType="Self.TIDIOMA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TJOGO" EntityType="Self.TJOGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPACOTE" EntityType="Self.TPACOTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPACOTE_TRECURSO" EntityType="Self.TPACOTE_TRECURSO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPALPITE" EntityType="Self.TPALPITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPONTUACAO" EntityType="Self.TPONTUACAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRECURSO" EntityType="Self.TRECURSO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TREGRA" EntityType="Self.TREGRA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRODADA" EntityType="Self.TRODADA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TTIME" EntityType="Self.TTIME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUSUARIO" EntityType="Self.TUSUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUSUARIO_RECURSO" EntityType="Self.TUSUARIO_RECURSO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUSUARIO_TBOLAO" EntityType="Self.TUSUARIO_TBOLAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUSUARIO_TIME" EntityType="Self.TUSUARIO_TIME" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBOLAO_TARQUIVO" Association="Self.FK_TBOLAO_TARQUIVO">
+            <End Role="TARQUIVO" EntitySet="TARQUIVO" />
+            <End Role="TBOLAO" EntitySet="TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBOLAO_TCOMPETICAO" Association="Self.FK_TBOLAO_TCOMPETICAO">
+            <End Role="TCOMPETICAO" EntitySet="TCOMPETICAO" />
+            <End Role="TBOLAO" EntitySet="TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBOLAO_TREGRA" Association="Self.FK_TBOLAO_TREGRA">
+            <End Role="TREGRA" EntitySet="TREGRA" />
+            <End Role="TBOLAO" EntitySet="TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TCOMPETICAO_TARQUIVO" Association="Self.FK_TCOMPETICAO_TARQUIVO">
+            <End Role="TARQUIVO" EntitySet="TARQUIVO" />
+            <End Role="TCOMPETICAO" EntitySet="TCOMPETICAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TDICIONARIO_TIDIOMA" Association="Self.FK_TDICIONARIO_TIDIOMA">
+            <End Role="TIDIOMA" EntitySet="TIDIOMA" />
+            <End Role="TDICIONARIO" EntitySet="TDICIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TJOGO_TRODADA" Association="Self.FK_TJOGO_TRODADA">
+            <End Role="TRODADA" EntitySet="TRODADA" />
+            <End Role="TJOGO" EntitySet="TJOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TJOGO_TTIME1" Association="Self.FK_TJOGO_TTIME1">
+            <End Role="TTIME" EntitySet="TTIME" />
+            <End Role="TJOGO" EntitySet="TJOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TJOGO_TTIME2" Association="Self.FK_TJOGO_TTIME2">
+            <End Role="TTIME" EntitySet="TTIME" />
+            <End Role="TJOGO" EntitySet="TJOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPACOTE_TRECURSO_TPACOTE" Association="Self.FK_TPACOTE_TRECURSO_TPACOTE">
+            <End Role="TPACOTE" EntitySet="TPACOTE" />
+            <End Role="TPACOTE_TRECURSO" EntitySet="TPACOTE_TRECURSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPACOTE_TRECURSO_TRECURSO" Association="Self.FK_TPACOTE_TRECURSO_TRECURSO">
+            <End Role="TRECURSO" EntitySet="TRECURSO" />
+            <End Role="TPACOTE_TRECURSO" EntitySet="TPACOTE_TRECURSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPALPITE_TJOGO" Association="Self.FK_TPALPITE_TJOGO">
+            <End Role="TJOGO" EntitySet="TJOGO" />
+            <End Role="TPALPITE" EntitySet="TPALPITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPALPITE_TPONTUACAO" Association="Self.FK_TPALPITE_TPONTUACAO">
+            <End Role="TPONTUACAO" EntitySet="TPONTUACAO" />
+            <End Role="TPALPITE" EntitySet="TPALPITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPALPITE_TRECURSO" Association="Self.FK_TPALPITE_TRECURSO">
+            <End Role="TRECURSO" EntitySet="TRECURSO" />
+            <End Role="TPALPITE" EntitySet="TPALPITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPALPITE_TUSUARIO" Association="Self.FK_TPALPITE_TUSUARIO">
+            <End Role="TUSUARIO" EntitySet="TUSUARIO" />
+            <End Role="TPALPITE" EntitySet="TPALPITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRODADA_TCOMPETICAO" Association="Self.FK_TRODADA_TCOMPETICAO">
+            <End Role="TCOMPETICAO" EntitySet="TCOMPETICAO" />
+            <End Role="TRODADA" EntitySet="TRODADA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTIME_TARQUIVO" Association="Self.FK_TTIME_TARQUIVO">
+            <End Role="TARQUIVO" EntitySet="TARQUIVO" />
+            <End Role="TTIME" EntitySet="TTIME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_RECURSO_TRECURSO" Association="Self.FK_TUSUARIO_RECURSO_TRECURSO">
+            <End Role="TRECURSO" EntitySet="TRECURSO" />
+            <End Role="TUSUARIO_RECURSO" EntitySet="TUSUARIO_RECURSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TBOLAO_TBOLAO" Association="Self.FK_TUSUARIO_TBOLAO_TBOLAO">
+            <End Role="TBOLAO" EntitySet="TBOLAO" />
+            <End Role="TUSUARIO_TBOLAO" EntitySet="TUSUARIO_TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TBOLAO_TUSUARIO" Association="Self.FK_TUSUARIO_TBOLAO_TUSUARIO">
+            <End Role="TUSUARIO" EntitySet="TUSUARIO" />
+            <End Role="TUSUARIO_TBOLAO" EntitySet="TUSUARIO_TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TBOLAO_TUSUARIO_RESPONSAVEL" Association="Self.FK_TUSUARIO_TBOLAO_TUSUARIO_RESPONSAVEL">
+            <End Role="TUSUARIO" EntitySet="TUSUARIO" />
+            <End Role="TUSUARIO_TBOLAO" EntitySet="TUSUARIO_TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TIME_TTIME" Association="Self.FK_TUSUARIO_TIME_TTIME">
+            <End Role="TTIME" EntitySet="TTIME" />
+            <End Role="TUSUARIO_TIME" EntitySet="TUSUARIO_TIME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TIME_TUSUARIO" Association="Self.FK_TUSUARIO_TIME_TUSUARIO">
+            <End Role="TUSUARIO" EntitySet="TUSUARIO" />
+            <End Role="TUSUARIO_TIME" EntitySet="TUSUARIO_TIME" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model.Bolao" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TARQUIVO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="NOME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ARQUIVO" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="TBOLAO" Relationship="Self.FK_TBOLAO_TARQUIVO" FromRole="TARQUIVO" ToRole="TBOLAO" />
+          <NavigationProperty Name="TTIME" Relationship="Self.FK_TTIME_TARQUIVO" FromRole="TARQUIVO" ToRole="TTIME" />
+          <NavigationProperty Name="TCOMPETICAO" Relationship="Model.Bolao.FK_TCOMPETICAO_TARQUIVO" FromRole="TARQUIVO" ToRole="TCOMPETICAO" />
+        </EntityType>
+        <EntityType Name="TBOLAO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="NOME_CURTO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOME_LONGO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRICAO" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_INICIO" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DATA_FIM" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ATIVO" Type="Boolean" Nullable="false" />
+          <Property Name="ID_REGRA" Type="Guid" Nullable="false" />
+          <Property Name="ID_ARQUIVO" Type="Guid" />
+          <NavigationProperty Name="TARQUIVO" Relationship="Self.FK_TBOLAO_TARQUIVO" FromRole="TBOLAO" ToRole="TARQUIVO" />
+          <NavigationProperty Name="TREGRA" Relationship="Self.FK_TBOLAO_TREGRA" FromRole="TBOLAO" ToRole="TREGRA" />
+          <NavigationProperty Name="TUSUARIO_TBOLAO" Relationship="Self.FK_TUSUARIO_TBOLAO_TBOLAO" FromRole="TBOLAO" ToRole="TUSUARIO_TBOLAO" />
+          <Property Name="ID_COMPETICAO" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="TCOMPETICAO" Relationship="Model.Bolao.FK_TBOLAO_TCOMPETICAO" FromRole="TBOLAO" ToRole="TCOMPETICAO" />
+        </EntityType>
+        <EntityType Name="TDICIONARIO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="ID_IDIOMA" Type="Guid" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRICAO" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TIDIOMA" Relationship="Self.FK_TDICIONARIO_TIDIOMA" FromRole="TDICIONARIO" ToRole="TIDIOMA" />
+        </EntityType>
+        <EntityType Name="TIDIOMA">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="COD_IDIOMA" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TDICIONARIO" Relationship="Self.FK_TDICIONARIO_TIDIOMA" FromRole="TIDIOMA" ToRole="TDICIONARIO" />
+        </EntityType>
+        <EntityType Name="TJOGO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="ID_RODADA" Type="Guid" Nullable="false" />
+          <Property Name="ID_TIME1" Type="Guid" Nullable="false" />
+          <Property Name="ID_TIME2" Type="Guid" Nullable="false" />
+          <Property Name="DATA" Type="DateTime" Precision="3" />
+          <Property Name="NUMERO" Type="Int16" Nullable="false" />
+          <Property Name="PESO" Type="Int16" Nullable="false" />
+          <Property Name="GOLS_TIME1" Type="Int16" />
+          <Property Name="GOLS_TIME2" Type="Int16" />
+          <Property Name="ATIVO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TTIME1" Relationship="Self.FK_TJOGO_TTIME1" FromRole="TJOGO" ToRole="TTIME" />
+          <NavigationProperty Name="TTIME2" Relationship="Self.FK_TJOGO_TTIME2" FromRole="TJOGO" ToRole="TTIME" />
+          <NavigationProperty Name="TPALPITE" Relationship="Self.FK_TPALPITE_TJOGO" FromRole="TJOGO" ToRole="TPALPITE" />
+          <NavigationProperty Name="TRODADA" Relationship="Model.Bolao.FK_TJOGO_TRODADA" FromRole="TJOGO" ToRole="TRODADA" />
+        </EntityType>
+        <EntityType Name="TPACOTE">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TPACOTE_TRECURSO" Relationship="Self.FK_TPACOTE_TRECURSO_TPACOTE" FromRole="TPACOTE" ToRole="TPACOTE_TRECURSO" />
+        </EntityType>
+        <EntityType Name="TPACOTE_TRECURSO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="ID_PACOTE" Type="Guid" Nullable="false" />
+          <Property Name="ID_RECURSO" Type="Guid" Nullable="false" />
+          <Property Name="QUANTIDADE" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="TPACOTE" Relationship="Self.FK_TPACOTE_TRECURSO_TPACOTE" FromRole="TPACOTE_TRECURSO" ToRole="TPACOTE" />
+          <NavigationProperty Name="TRECURSO" Relationship="Self.FK_TPACOTE_TRECURSO_TRECURSO" FromRole="TPACOTE_TRECURSO" ToRole="TRECURSO" />
+        </EntityType>
+        <EntityType Name="TPALPITE">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Guid" Nullable="false" />
+          <Property Name="ID_JOGO" Type="Guid" Nullable="false" />
+          <Property Name="GOL_TIME1" Type="Int16" />
+          <Property Name="GOL_TIME2" Type="Int16" />
+          <Property Name="ID_RECURSO" Type="Guid" />
+          <Property Name="DATA" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TJOGO" Relationship="Self.FK_TPALPITE_TJOGO" FromRole="TPALPITE" ToRole="TJOGO" />
+          <NavigationProperty Name="TRECURSO" Relationship="Self.FK_TPALPITE_TRECURSO" FromRole="TPALPITE" ToRole="TRECURSO" />
+          <NavigationProperty Name="TUSUARIO" Relationship="Self.FK_TPALPITE_TUSUARIO" FromRole="TPALPITE" ToRole="TUSUARIO" />
+          <Property Name="ID_PONTUACAO" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="TPONTUACAO" Relationship="Model.Bolao.FK_TPALPITE_TPONTUACAO" FromRole="TPALPITE" ToRole="TPONTUACAO" />
+        </EntityType>
+        <EntityType Name="TRECURSO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRICAO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PESO" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="TPACOTE_TRECURSO" Relationship="Self.FK_TPACOTE_TRECURSO_TRECURSO" FromRole="TRECURSO" ToRole="TPACOTE_TRECURSO" />
+          <NavigationProperty Name="TPALPITE" Relationship="Self.FK_TPALPITE_TRECURSO" FromRole="TRECURSO" ToRole="TPALPITE" />
+          <NavigationProperty Name="TUSUARIO_RECURSO" Relationship="Self.FK_TUSUARIO_RECURSO_TRECURSO" FromRole="TRECURSO" ToRole="TUSUARIO_RECURSO" />
+        </EntityType>
+        <EntityType Name="TREGRA">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="TIPO_BOLAO" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PERMITE_RECURSO" Type="Boolean" Nullable="false" />
+          <Property Name="PREMIADO" Type="Boolean" Nullable="false" />
+          <Property Name="DESCRICAO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBOLAO" Relationship="Self.FK_TBOLAO_TREGRA" FromRole="TREGRA" ToRole="TBOLAO" />
+        </EntityType>
+        <EntityType Name="TTIME">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="NOME_CURTO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOME_LONGO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_ARQUIVO" Type="Guid" />
+          <NavigationProperty Name="TARQUIVO" Relationship="Self.FK_TTIME_TARQUIVO" FromRole="TTIME" ToRole="TARQUIVO" />
+          <NavigationProperty Name="TJOGO1" Relationship="Self.FK_TJOGO_TTIME1" FromRole="TTIME" ToRole="TJOGO" />
+          <NavigationProperty Name="TJOGO2" Relationship="Self.FK_TJOGO_TTIME2" FromRole="TTIME" ToRole="TJOGO" />
+          <NavigationProperty Name="TUSUARIO_TIME" Relationship="Self.FK_TUSUARIO_TIME_TTIME" FromRole="TTIME" ToRole="TUSUARIO_TIME" />
+        </EntityType>
+        <EntityType Name="TUSUARIO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="LOGIN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ATIVO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TPALPITE" Relationship="Self.FK_TPALPITE_TUSUARIO" FromRole="TUSUARIO" ToRole="TPALPITE" />
+          <NavigationProperty Name="TUSUARIO_TBOLAO" Relationship="Self.FK_TUSUARIO_TBOLAO_TUSUARIO" FromRole="TUSUARIO" ToRole="TUSUARIO_TBOLAO" />
+          <NavigationProperty Name="TUSUARIO_TBOLAO_RESPONSAVEL" Relationship="Self.FK_TUSUARIO_TBOLAO_TUSUARIO_RESPONSAVEL" FromRole="TUSUARIO" ToRole="TUSUARIO_TBOLAO" />
+          <NavigationProperty Name="TUSUARIO_TIME" Relationship="Self.FK_TUSUARIO_TIME_TUSUARIO" FromRole="TUSUARIO" ToRole="TUSUARIO_TIME" />
+        </EntityType>
+        <EntityType Name="TUSUARIO_RECURSO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="ID_RECURSO" Type="Guid" Nullable="false" />
+          <Property Name="QUANTIDADE" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="TRECURSO" Relationship="Self.FK_TUSUARIO_RECURSO_TRECURSO" FromRole="TUSUARIO_RECURSO" ToRole="TRECURSO" />
+        </EntityType>
+        <EntityType Name="TUSUARIO_TBOLAO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Guid" Nullable="false" />
+          <Property Name="ID_BOLAO" Type="Guid" Nullable="false" />
+          <Property Name="ATIVO" Type="Boolean" Nullable="false" />
+          <Property Name="ID_USUARIO_RESPONSAVEL" Type="Guid" />
+          <NavigationProperty Name="TBOLAO" Relationship="Self.FK_TUSUARIO_TBOLAO_TBOLAO" FromRole="TUSUARIO_TBOLAO" ToRole="TBOLAO" />
+          <NavigationProperty Name="TUSUARIO" Relationship="Self.FK_TUSUARIO_TBOLAO_TUSUARIO" FromRole="TUSUARIO_TBOLAO" ToRole="TUSUARIO" />
+          <NavigationProperty Name="TUSUARIO_RESPONSAVEL" Relationship="Self.FK_TUSUARIO_TBOLAO_TUSUARIO_RESPONSAVEL" FromRole="TUSUARIO_TBOLAO" ToRole="TUSUARIO" />
+        </EntityType>
+        <EntityType Name="TUSUARIO_TIME">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Guid" Nullable="false" />
+          <Property Name="ID_TIME" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="TTIME" Relationship="Self.FK_TUSUARIO_TIME_TTIME" FromRole="TUSUARIO_TIME" ToRole="TTIME" />
+          <NavigationProperty Name="TUSUARIO" Relationship="Self.FK_TUSUARIO_TIME_TUSUARIO" FromRole="TUSUARIO_TIME" ToRole="TUSUARIO" />
+        </EntityType>
+        <Association Name="FK_TBOLAO_TARQUIVO">
+          <End Role="TARQUIVO" Type="Self.TARQUIVO" Multiplicity="0..1" />
+          <End Role="TBOLAO" Type="Self.TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARQUIVO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TBOLAO">
+              <PropertyRef Name="ID_ARQUIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TTIME_TARQUIVO">
+          <End Role="TARQUIVO" Type="Self.TARQUIVO" Multiplicity="0..1" />
+          <End Role="TTIME" Type="Self.TTIME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARQUIVO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TTIME">
+              <PropertyRef Name="ID_ARQUIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBOLAO_TREGRA">
+          <End Role="TREGRA" Type="Self.TREGRA" Multiplicity="1" />
+          <End Role="TBOLAO" Type="Self.TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TREGRA">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TBOLAO">
+              <PropertyRef Name="ID_REGRA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TBOLAO_TBOLAO">
+          <End Role="TBOLAO" Type="Self.TBOLAO" Multiplicity="1" />
+          <End Role="TUSUARIO_TBOLAO" Type="Self.TUSUARIO_TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBOLAO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TBOLAO">
+              <PropertyRef Name="ID_BOLAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TDICIONARIO_TIDIOMA">
+          <End Role="TIDIOMA" Type="Self.TIDIOMA" Multiplicity="1" />
+          <End Role="TDICIONARIO" Type="Self.TDICIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIDIOMA">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TDICIONARIO">
+              <PropertyRef Name="ID_IDIOMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TJOGO_TTIME1">
+          <End Role="TTIME" Type="Self.TTIME" Multiplicity="1" />
+          <End Role="TJOGO" Type="Self.TJOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTIME">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TJOGO">
+              <PropertyRef Name="ID_TIME1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TJOGO_TTIME2">
+          <End Role="TTIME" Type="Self.TTIME" Multiplicity="1" />
+          <End Role="TJOGO" Type="Self.TJOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTIME">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TJOGO">
+              <PropertyRef Name="ID_TIME2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPALPITE_TJOGO">
+          <End Role="TJOGO" Type="Self.TJOGO" Multiplicity="1" />
+          <End Role="TPALPITE" Type="Self.TPALPITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TJOGO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPALPITE">
+              <PropertyRef Name="ID_JOGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPACOTE_TRECURSO_TPACOTE">
+          <End Role="TPACOTE" Type="Self.TPACOTE" Multiplicity="1" />
+          <End Role="TPACOTE_TRECURSO" Type="Self.TPACOTE_TRECURSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPACOTE">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPACOTE_TRECURSO">
+              <PropertyRef Name="ID_PACOTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPACOTE_TRECURSO_TRECURSO">
+          <End Role="TRECURSO" Type="Self.TRECURSO" Multiplicity="1" />
+          <End Role="TPACOTE_TRECURSO" Type="Self.TPACOTE_TRECURSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRECURSO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPACOTE_TRECURSO">
+              <PropertyRef Name="ID_RECURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPALPITE_TRECURSO">
+          <End Role="TRECURSO" Type="Self.TRECURSO" Multiplicity="0..1" />
+          <End Role="TPALPITE" Type="Self.TPALPITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRECURSO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPALPITE">
+              <PropertyRef Name="ID_RECURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPALPITE_TUSUARIO">
+          <End Role="TUSUARIO" Type="Self.TUSUARIO" Multiplicity="1" />
+          <End Role="TPALPITE" Type="Self.TPALPITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSUARIO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPALPITE">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_RECURSO_TRECURSO">
+          <End Role="TRECURSO" Type="Self.TRECURSO" Multiplicity="1" />
+          <End Role="TUSUARIO_RECURSO" Type="Self.TUSUARIO_RECURSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRECURSO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_RECURSO">
+              <PropertyRef Name="ID_RECURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TIME_TTIME">
+          <End Role="TTIME" Type="Self.TTIME" Multiplicity="1" />
+          <End Role="TUSUARIO_TIME" Type="Self.TUSUARIO_TIME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTIME">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TIME">
+              <PropertyRef Name="ID_TIME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TBOLAO_TUSUARIO">
+          <End Role="TUSUARIO" Type="Self.TUSUARIO" Multiplicity="1" />
+          <End Role="TUSUARIO_TBOLAO" Type="Self.TUSUARIO_TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSUARIO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TBOLAO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TBOLAO_TUSUARIO_RESPONSAVEL">
+          <End Role="TUSUARIO" Type="Self.TUSUARIO" Multiplicity="0..1" />
+          <End Role="TUSUARIO_TBOLAO" Type="Self.TUSUARIO_TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSUARIO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TBOLAO">
+              <PropertyRef Name="ID_USUARIO_RESPONSAVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUSUARIO_TIME_TUSUARIO">
+          <End Role="TUSUARIO" Type="Self.TUSUARIO" Multiplicity="1" />
+          <End Role="TUSUARIO_TIME" Type="Self.TUSUARIO_TIME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSUARIO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TUSUARIO_TIME">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_BOLAO" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="TARQUIVO" EntityType="Self.TARQUIVO" />
+          <EntitySet Name="TBOLAO" EntityType="Self.TBOLAO" />
+          <EntitySet Name="TDICIONARIO" EntityType="Self.TDICIONARIO" />
+          <EntitySet Name="TIDIOMA" EntityType="Self.TIDIOMA" />
+          <EntitySet Name="TJOGO" EntityType="Self.TJOGO" />
+          <EntitySet Name="TPACOTE" EntityType="Self.TPACOTE" />
+          <EntitySet Name="TPACOTE_TRECURSO" EntityType="Self.TPACOTE_TRECURSO" />
+          <EntitySet Name="TPALPITE" EntityType="Self.TPALPITE" />
+          <EntitySet Name="TRECURSO" EntityType="Self.TRECURSO" />
+          <EntitySet Name="TREGRA" EntityType="Self.TREGRA" />
+          <EntitySet Name="TTIME" EntityType="Self.TTIME" />
+          <EntitySet Name="TUSUARIO" EntityType="Self.TUSUARIO" />
+          <EntitySet Name="TUSUARIO_RECURSO" EntityType="Self.TUSUARIO_RECURSO" />
+          <EntitySet Name="TUSUARIO_TBOLAO" EntityType="Self.TUSUARIO_TBOLAO" />
+          <EntitySet Name="TUSUARIO_TIME" EntityType="Self.TUSUARIO_TIME" />
+          <AssociationSet Name="FK_TBOLAO_TARQUIVO" Association="Self.FK_TBOLAO_TARQUIVO">
+            <End Role="TARQUIVO" EntitySet="TARQUIVO" />
+            <End Role="TBOLAO" EntitySet="TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTIME_TARQUIVO" Association="Self.FK_TTIME_TARQUIVO">
+            <End Role="TARQUIVO" EntitySet="TARQUIVO" />
+            <End Role="TTIME" EntitySet="TTIME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBOLAO_TREGRA" Association="Self.FK_TBOLAO_TREGRA">
+            <End Role="TREGRA" EntitySet="TREGRA" />
+            <End Role="TBOLAO" EntitySet="TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TBOLAO_TBOLAO" Association="Self.FK_TUSUARIO_TBOLAO_TBOLAO">
+            <End Role="TBOLAO" EntitySet="TBOLAO" />
+            <End Role="TUSUARIO_TBOLAO" EntitySet="TUSUARIO_TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TDICIONARIO_TIDIOMA" Association="Self.FK_TDICIONARIO_TIDIOMA">
+            <End Role="TIDIOMA" EntitySet="TIDIOMA" />
+            <End Role="TDICIONARIO" EntitySet="TDICIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TJOGO_TTIME1" Association="Self.FK_TJOGO_TTIME1">
+            <End Role="TTIME" EntitySet="TTIME" />
+            <End Role="TJOGO" EntitySet="TJOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TJOGO_TTIME2" Association="Self.FK_TJOGO_TTIME2">
+            <End Role="TTIME" EntitySet="TTIME" />
+            <End Role="TJOGO" EntitySet="TJOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPALPITE_TJOGO" Association="Self.FK_TPALPITE_TJOGO">
+            <End Role="TJOGO" EntitySet="TJOGO" />
+            <End Role="TPALPITE" EntitySet="TPALPITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPACOTE_TRECURSO_TPACOTE" Association="Self.FK_TPACOTE_TRECURSO_TPACOTE">
+            <End Role="TPACOTE" EntitySet="TPACOTE" />
+            <End Role="TPACOTE_TRECURSO" EntitySet="TPACOTE_TRECURSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPACOTE_TRECURSO_TRECURSO" Association="Self.FK_TPACOTE_TRECURSO_TRECURSO">
+            <End Role="TRECURSO" EntitySet="TRECURSO" />
+            <End Role="TPACOTE_TRECURSO" EntitySet="TPACOTE_TRECURSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPALPITE_TRECURSO" Association="Self.FK_TPALPITE_TRECURSO">
+            <End Role="TRECURSO" EntitySet="TRECURSO" />
+            <End Role="TPALPITE" EntitySet="TPALPITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPALPITE_TUSUARIO" Association="Self.FK_TPALPITE_TUSUARIO">
+            <End Role="TUSUARIO" EntitySet="TUSUARIO" />
+            <End Role="TPALPITE" EntitySet="TPALPITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_RECURSO_TRECURSO" Association="Self.FK_TUSUARIO_RECURSO_TRECURSO">
+            <End Role="TRECURSO" EntitySet="TRECURSO" />
+            <End Role="TUSUARIO_RECURSO" EntitySet="TUSUARIO_RECURSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TIME_TTIME" Association="Self.FK_TUSUARIO_TIME_TTIME">
+            <End Role="TTIME" EntitySet="TTIME" />
+            <End Role="TUSUARIO_TIME" EntitySet="TUSUARIO_TIME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TBOLAO_TUSUARIO" Association="Self.FK_TUSUARIO_TBOLAO_TUSUARIO">
+            <End Role="TUSUARIO" EntitySet="TUSUARIO" />
+            <End Role="TUSUARIO_TBOLAO" EntitySet="TUSUARIO_TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TBOLAO_TUSUARIO_RESPONSAVEL" Association="Self.FK_TUSUARIO_TBOLAO_TUSUARIO_RESPONSAVEL">
+            <End Role="TUSUARIO" EntitySet="TUSUARIO" />
+            <End Role="TUSUARIO_TBOLAO" EntitySet="TUSUARIO_TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUSUARIO_TIME_TUSUARIO" Association="Self.FK_TUSUARIO_TIME_TUSUARIO">
+            <End Role="TUSUARIO" EntitySet="TUSUARIO" />
+            <End Role="TUSUARIO_TIME" EntitySet="TUSUARIO_TIME" />
+          </AssociationSet>
+          <EntitySet Name="TPONTUACAO" EntityType="Model.Bolao.TPONTUACAO" />
+          <AssociationSet Name="FK_TPALPITE_TPONTUACAO" Association="Model.Bolao.FK_TPALPITE_TPONTUACAO">
+            <End Role="TPONTUACAO" EntitySet="TPONTUACAO" />
+            <End Role="TPALPITE" EntitySet="TPALPITE" />
+          </AssociationSet>
+          <EntitySet Name="TCOMPETICAO" EntityType="Model.Bolao.TCOMPETICAO" />
+          <EntitySet Name="TRODADA" EntityType="Model.Bolao.TRODADA" />
+          <AssociationSet Name="FK_TCOMPETICAO_TARQUIVO" Association="Model.Bolao.FK_TCOMPETICAO_TARQUIVO">
+            <End Role="TARQUIVO" EntitySet="TARQUIVO" />
+            <End Role="TCOMPETICAO" EntitySet="TCOMPETICAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBOLAO_TCOMPETICAO" Association="Model.Bolao.FK_TBOLAO_TCOMPETICAO">
+            <End Role="TCOMPETICAO" EntitySet="TCOMPETICAO" />
+            <End Role="TBOLAO" EntitySet="TBOLAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRODADA_TCOMPETICAO" Association="Model.Bolao.FK_TRODADA_TCOMPETICAO">
+            <End Role="TCOMPETICAO" EntitySet="TCOMPETICAO" />
+            <End Role="TRODADA" EntitySet="TRODADA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TJOGO_TRODADA" Association="Model.Bolao.FK_TJOGO_TRODADA">
+            <End Role="TRODADA" EntitySet="TRODADA" />
+            <End Role="TJOGO" EntitySet="TJOGO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TPONTUACAO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="CODIGO" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRICAO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VALOR" Type="Int16" Nullable="false" />
+          <Property Name="PRIORIDADE" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="TPALPITE" Relationship="Model.Bolao.FK_TPALPITE_TPONTUACAO" FromRole="TPONTUACAO" ToRole="TPALPITE" />
+        </EntityType>
+        <Association Name="FK_TPALPITE_TPONTUACAO">
+          <End Type="Model.Bolao.TPONTUACAO" Role="TPONTUACAO" Multiplicity="1" />
+          <End Type="Model.Bolao.TPALPITE" Role="TPALPITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPONTUACAO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TPALPITE">
+              <PropertyRef Name="ID_PONTUACAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TCOMPETICAO">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="NOME_CURTO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NOME_LONGO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRICAO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_INICIO" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DATA_FIM" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ATIVO" Type="Boolean" Nullable="false" />
+          <Property Name="ID_ARQUIVO" Type="Guid" />
+          <NavigationProperty Name="TARQUIVO" Relationship="Model.Bolao.FK_TCOMPETICAO_TARQUIVO" FromRole="TCOMPETICAO" ToRole="TARQUIVO" />
+          <NavigationProperty Name="TBOLAO" Relationship="Model.Bolao.FK_TBOLAO_TCOMPETICAO" FromRole="TCOMPETICAO" ToRole="TBOLAO" />
+          <NavigationProperty Name="TRODADA" Relationship="Model.Bolao.FK_TRODADA_TCOMPETICAO" FromRole="TCOMPETICAO" ToRole="TRODADA" />
+        </EntityType>
+        <EntityType Name="TRODADA">
+          <Key>
+            <PropertyRef Name="IDENTIFICADOR" />
+          </Key>
+          <Property Name="IDENTIFICADOR" Type="Guid" Nullable="false" />
+          <Property Name="NOME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERO" Type="Int16" Nullable="false" />
+          <Property Name="PESO" Type="Int16" Nullable="false" />
+          <Property Name="ID_COMPETICAO" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="TCOMPETICAO" Relationship="Model.Bolao.FK_TRODADA_TCOMPETICAO" FromRole="TRODADA" ToRole="TCOMPETICAO" />
+          <NavigationProperty Name="TJOGO" Relationship="Model.Bolao.FK_TJOGO_TRODADA" FromRole="TRODADA" ToRole="TJOGO" />
+        </EntityType>
+        <Association Name="FK_TCOMPETICAO_TARQUIVO">
+          <End Type="Model.Bolao.TARQUIVO" Role="TARQUIVO" Multiplicity="0..1" />
+          <End Type="Model.Bolao.TCOMPETICAO" Role="TCOMPETICAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARQUIVO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TCOMPETICAO">
+              <PropertyRef Name="ID_ARQUIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBOLAO_TCOMPETICAO">
+          <End Type="Model.Bolao.TCOMPETICAO" Role="TCOMPETICAO" Multiplicity="1" />
+          <End Type="Model.Bolao.TBOLAO" Role="TBOLAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCOMPETICAO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TBOLAO">
+              <PropertyRef Name="ID_COMPETICAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRODADA_TCOMPETICAO">
+          <End Type="Model.Bolao.TCOMPETICAO" Role="TCOMPETICAO" Multiplicity="1" />
+          <End Type="Model.Bolao.TRODADA" Role="TRODADA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCOMPETICAO">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TRODADA">
+              <PropertyRef Name="ID_COMPETICAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TJOGO_TRODADA">
+          <End Type="Model.Bolao.TRODADA" Role="TRODADA" Multiplicity="1" />
+          <End Type="Model.Bolao.TJOGO" Role="TJOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRODADA">
+              <PropertyRef Name="IDENTIFICADOR" />
+            </Principal>
+            <Dependent Role="TJOGO">
+              <PropertyRef Name="ID_RODADA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelBolaoStoreContainer" CdmEntityContainer="DB_BOLAO">
+          <EntitySetMapping Name="TARQUIVO">
+            <EntityTypeMapping TypeName="Model.Bolao.TARQUIVO">
+              <MappingFragment StoreEntitySet="TARQUIVO">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="ARQUIVO" ColumnName="ARQUIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBOLAO">
+            <EntityTypeMapping TypeName="Model.Bolao.TBOLAO">
+              <MappingFragment StoreEntitySet="TBOLAO">
+                <ScalarProperty Name="ID_COMPETICAO" ColumnName="ID_COMPETICAO" />
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="NOME_CURTO" ColumnName="NOME_CURTO" />
+                <ScalarProperty Name="NOME_LONGO" ColumnName="NOME_LONGO" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="DATA_INICIO" ColumnName="DATA_INICIO" />
+                <ScalarProperty Name="DATA_FIM" ColumnName="DATA_FIM" />
+                <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
+                <ScalarProperty Name="ID_REGRA" ColumnName="ID_REGRA" />
+                <ScalarProperty Name="ID_ARQUIVO" ColumnName="ID_ARQUIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TDICIONARIO">
+            <EntityTypeMapping TypeName="Model.Bolao.TDICIONARIO">
+              <MappingFragment StoreEntitySet="TDICIONARIO">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="ID_IDIOMA" ColumnName="ID_IDIOMA" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIDIOMA">
+            <EntityTypeMapping TypeName="Model.Bolao.TIDIOMA">
+              <MappingFragment StoreEntitySet="TIDIOMA">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="COD_IDIOMA" ColumnName="COD_IDIOMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TJOGO">
+            <EntityTypeMapping TypeName="Model.Bolao.TJOGO">
+              <MappingFragment StoreEntitySet="TJOGO">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="ID_RODADA" ColumnName="ID_RODADA" />
+                <ScalarProperty Name="ID_TIME1" ColumnName="ID_TIME1" />
+                <ScalarProperty Name="ID_TIME2" ColumnName="ID_TIME2" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="PESO" ColumnName="PESO" />
+                <ScalarProperty Name="GOLS_TIME1" ColumnName="GOLS_TIME1" />
+                <ScalarProperty Name="GOLS_TIME2" ColumnName="GOLS_TIME2" />
+                <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPACOTE">
+            <EntityTypeMapping TypeName="Model.Bolao.TPACOTE">
+              <MappingFragment StoreEntitySet="TPACOTE">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPACOTE_TRECURSO">
+            <EntityTypeMapping TypeName="Model.Bolao.TPACOTE_TRECURSO">
+              <MappingFragment StoreEntitySet="TPACOTE_TRECURSO">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="ID_PACOTE" ColumnName="ID_PACOTE" />
+                <ScalarProperty Name="ID_RECURSO" ColumnName="ID_RECURSO" />
+                <ScalarProperty Name="QUANTIDADE" ColumnName="QUANTIDADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPALPITE">
+            <EntityTypeMapping TypeName="Model.Bolao.TPALPITE">
+              <MappingFragment StoreEntitySet="TPALPITE">
+                <ScalarProperty Name="ID_PONTUACAO" ColumnName="ID_PONTUACAO" />
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_JOGO" ColumnName="ID_JOGO" />
+                <ScalarProperty Name="GOL_TIME1" ColumnName="GOL_TIME1" />
+                <ScalarProperty Name="GOL_TIME2" ColumnName="GOL_TIME2" />
+                <ScalarProperty Name="ID_RECURSO" ColumnName="ID_RECURSO" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRECURSO">
+            <EntityTypeMapping TypeName="Model.Bolao.TRECURSO">
+              <MappingFragment StoreEntitySet="TRECURSO">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="PESO" ColumnName="PESO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TREGRA">
+            <EntityTypeMapping TypeName="Model.Bolao.TREGRA">
+              <MappingFragment StoreEntitySet="TREGRA">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="TIPO_BOLAO" ColumnName="TIPO_BOLAO" />
+                <ScalarProperty Name="PERMITE_RECURSO" ColumnName="PERMITE_RECURSO" />
+                <ScalarProperty Name="PREMIADO" ColumnName="PREMIADO" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TTIME">
+            <EntityTypeMapping TypeName="Model.Bolao.TTIME">
+              <MappingFragment StoreEntitySet="TTIME">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="NOME_CURTO" ColumnName="NOME_CURTO" />
+                <ScalarProperty Name="NOME_LONGO" ColumnName="NOME_LONGO" />
+                <ScalarProperty Name="ID_ARQUIVO" ColumnName="ID_ARQUIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUSUARIO">
+            <EntityTypeMapping TypeName="Model.Bolao.TUSUARIO">
+              <MappingFragment StoreEntitySet="TUSUARIO">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="LOGIN" ColumnName="LOGIN" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUSUARIO_RECURSO">
+            <EntityTypeMapping TypeName="Model.Bolao.TUSUARIO_RECURSO">
+              <MappingFragment StoreEntitySet="TUSUARIO_RECURSO">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="ID_RECURSO" ColumnName="ID_RECURSO" />
+                <ScalarProperty Name="QUANTIDADE" ColumnName="QUANTIDADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUSUARIO_TBOLAO">
+            <EntityTypeMapping TypeName="Model.Bolao.TUSUARIO_TBOLAO">
+              <MappingFragment StoreEntitySet="TUSUARIO_TBOLAO">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_BOLAO" ColumnName="ID_BOLAO" />
+                <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
+                <ScalarProperty Name="ID_USUARIO_RESPONSAVEL" ColumnName="ID_USUARIO_RESPONSAVEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUSUARIO_TIME">
+            <EntityTypeMapping TypeName="Model.Bolao.TUSUARIO_TIME">
+              <MappingFragment StoreEntitySet="TUSUARIO_TIME">
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_TIME" ColumnName="ID_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPONTUACAO">
+            <EntityTypeMapping TypeName="Model.Bolao.TPONTUACAO">
+              <MappingFragment StoreEntitySet="TPONTUACAO">
+                <ScalarProperty Name="PRIORIDADE" ColumnName="PRIORIDADE" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TCOMPETICAO">
+            <EntityTypeMapping TypeName="Model.Bolao.TCOMPETICAO">
+              <MappingFragment StoreEntitySet="TCOMPETICAO">
+                <ScalarProperty Name="ID_ARQUIVO" ColumnName="ID_ARQUIVO" />
+                <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
+                <ScalarProperty Name="DATA_FIM" ColumnName="DATA_FIM" />
+                <ScalarProperty Name="DATA_INICIO" ColumnName="DATA_INICIO" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="NOME_LONGO" ColumnName="NOME_LONGO" />
+                <ScalarProperty Name="NOME_CURTO" ColumnName="NOME_CURTO" />
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRODADA">
+            <EntityTypeMapping TypeName="Model.Bolao.TRODADA">
+              <MappingFragment StoreEntitySet="TRODADA">
+                <ScalarProperty Name="ID_COMPETICAO" ColumnName="ID_COMPETICAO" />
+                <ScalarProperty Name="PESO" ColumnName="PESO" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
