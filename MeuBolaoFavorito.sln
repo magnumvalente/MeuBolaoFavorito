@@ -8,9 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuBolaoFavoritoService", "MeuBolaoFavoritoService\MeuBolaoFavoritoService.csproj", "{84BC746F-83C3-4F0C-A825-286660802A51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuBolaoFavoritoSite", "MeuBolaoFavoritoSite\MeuBolaoFavoritoSite.csproj", "{5B4C6CC2-19E1-4379-83A7-57FE9EF3C9F0}"
-	ProjectSection(ProjectDependencies) = postProject
-		{84BC746F-83C3-4F0C-A825-286660802A51} = {84BC746F-83C3-4F0C-A825-286660802A51}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
